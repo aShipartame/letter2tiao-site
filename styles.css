@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Instrument+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --paper: #f5f0e7;
+  --paper-card: #fbf8f1;
+  --ink: #2b3b33;
+  --ink-soft: #6b776b;
+  --leaf: #66866c;
+  --coral: #d87763;
+  --rose: #e8a6a0;
+  --yellow: #e6c66e;
+  --lavender: #b6a7cf;
+  --line: rgba(43, 59, 51, 0.17);
+  --display: "Cormorant Garamond", "Baskervville", "Iowan Old Style", Georgia, serif;
+  --sans: "Instrument Sans", "Avenir Next", "Segoe UI", sans-serif;
+  --narrow: "Instrument Sans", "Avenir Next", "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 12% 6%, rgba(232, 166, 160, 0.19), transparent 18rem),
+    radial-gradient(circle at 86% 18%, rgba(183, 215, 216, 0.35), transparent 23rem),
+    var(--paper);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+::selection { color: var(--paper-card); background: var(--leaf); }
+a { color: inherit; }
+
+.site-header,
+.site-footer {
+  width: min(780px, calc(100% - 42px));
+  margin: 0 auto;
+}
+
+.site-header {
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--ink-soft);
+}
+
+.signature-mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 21px;
+  font-style: italic;
+  text-decoration: none;
+}
+
+.site-header p {
+  margin: 0;
+  font-family: var(--narrow);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.site-footer {
+  margin: 0;
+  font-family: var(--narrow);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.site-header a:focus-visible { outline: 3px solid rgba(216, 119, 99, 0.6); outline-offset: 4px; }
+
+main { position: relative; padding: 48px 0 140px; }
+
+.letter-page {
+  width: min(780px, calc(100% - 42px));
+  margin: 0 auto;
+  background: var(--paper-card);
+  border: 1px solid rgba(43, 59, 51, 0.12);
+  box-shadow: 0 30px 100px rgba(77, 82, 66, 0.15);
+  transform: rotate(0.25deg);
+}
+
+.letter-body { padding: clamp(58px, 9vw, 106px) clamp(26px, 10vw, 104px) 52px; }
+
+.letter-body p {
+  max-width: 600px;
+  margin: 0 auto 34px;
+  font-family: var(--display);
+  font-size: clamp(1.18rem, 1.75vw, 1.38rem);
+  line-height: 1.88;
+}
+
+.letter-salutation {
+  margin-bottom: 39px !important;
+  font-size: clamp(2.5rem, 5vw, 3.45rem) !important;
+  line-height: 1.2 !important;
+}
+
+.drop-cap::first-letter { float: left; padding: 14px 12px 0 0; color: var(--coral); font-size: 6.15rem; line-height: 0.69; }
+
+.road-image { max-width: 600px; margin: 60px auto 67px; }
+.road-image img { display: block; width: 100%; aspect-ratio: 16 / 8.8; object-fit: cover; border-radius: 13px 39px 13px 13px; }
+.letter-signoff { padding-top: 22px; text-align: right; }
+.letter-signoff strong { font-weight: 500; letter-spacing: 0.04em; }
+.letter-signoff span { font-size: 3rem; font-style: italic; }
+
+.site-footer { padding: 22px 0 30px; color: var(--ink-soft); border-top: 1px solid var(--line); }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 700ms ease, transform 700ms ease; }
+.reveal.is-visible { opacity: 1; transform: translateY(0) rotate(0.25deg); }
+
+@media (max-width: 600px) {
+  .site-header, .site-footer, .letter-page { width: min(100% - 28px, 780px); }
+  .site-header { min-height: 74px; }
+  main { padding: 28px 0 85px; }
+  .letter-body { padding: 42px 20px 34px; }
+  .letter-body p { font-size: 1.14rem; line-height: 1.78; }
+  .letter-salutation { font-size: 2.55rem !important; }
+  .road-image { margin: 42px auto 49px; }
+  .road-image img { aspect-ratio: 4 / 3; border-radius: 10px 28px 10px 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+  .reveal { opacity: 1; transform: rotate(0.25deg); }
+}
